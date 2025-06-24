@@ -1,0 +1,12 @@
+# Evita archivos temporales, backups y binarios
+*.log
+*.bak
+*.tmp
+*.swp
+*~
+# Directorios ocultos de sistema
+.cache/
+.idea/
+.vscode/
+__pycache__/
+.DS_Store

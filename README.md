@@ -1,3 +1,4 @@
+![Badge](https://img.shields.io/badge/OpenFOAM-11-blue.svg)\n
 # OpenFOAM Ubuntu Automation
 
 ## 🇬🇧 English
