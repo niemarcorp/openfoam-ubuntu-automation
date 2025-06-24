@@ -1,0 +1,25 @@
+name: OpenFOAM CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test-install:
+    runs-on: ubuntu-latest
+    name: Test OpenFOAM Installation Script
+
+    steps:
+      - name: Clonar el repositorio
+        uses: actions/checkout@v4
+
+      - name: Instalar dependencias básicas
+        run: sudo apt update && sudo apt install -y software-properties-common curl gnupg
+
+      - name: Ejecutar script de instalación
+        run: bash ./install_openfoam11.sh
+
+      - name: Verificar instalación con foamVersion
+        run: |
+          source /opt/openfoam11/etc/bashrc
+          foamVersion
