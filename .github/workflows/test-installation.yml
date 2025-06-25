@@ -14,12 +14,14 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Instalar dependencias básicas
-        run: sudo apt update && sudo apt install -y software-properties-common curl gnupg
+        run: |
+          sudo apt update
+          sudo apt install -y software-properties-common curl gnupg
 
       - name: Ejecutar script de instalación
         run: bash ./install_openfoam11.sh
 
       - name: Verificar instalación con foamVersion
-        run: |
-          source /opt/openfoam11/etc/bashrc
-          foamVersion
+        shell: bash -l {0}
+        run: foamVersion
+
