@@ -1,0 +1,31 @@
+name: Test OpenFOAM Uninstallation
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test-uninstall:
+    runs-on: ubuntu-latest
+    name: Test uninstall_openfoam11.sh
+
+    steps:
+      - name: Clonar el repositorio
+        uses: actions/checkout@v4
+
+      - name: Instalar dependencias básicas
+        run: sudo apt update && sudo apt install -y software-properties-common curl gnupg
+
+      - name: Ejecutar script de instalación
+        run: bash ./install_openfoam11.sh
+
+      - name: Ejecutar script de desinstalación
+        run: bash ./uninstall_openfoam11.sh
+
+      - name: Verificar que foamVersion ya no existe
+        run: |
+          if command -v foamVersion >/dev/null 2>&1; then
+            echo "❌ La orden foamVersion sigue presente tras la desinstalación."
+            exit 1
+          else
+            echo "✅ foamVersion ya no está disponible. Desinstalación exitosa."
+          fi
