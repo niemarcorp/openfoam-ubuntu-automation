@@ -21,7 +21,7 @@ jobs:
       - name: Ejecutar script de instalación
         run: bash ./install_openfoam11.sh
 
-      - name: Verificar instalación con foamVersion
-        shell: bash -l {0}
-        run: foamVersion
+      - name: Verificar instalación de OpenFOAM 11
+        run: |
+          bash -c "source /opt/openfoam11/etc/bashrc && foamVersion"
 
